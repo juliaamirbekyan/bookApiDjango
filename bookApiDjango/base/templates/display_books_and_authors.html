@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books and Authors</title>
+</head>
+<body>
+    <h1>Books</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Pages</th>
+                <th>ISBN</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.book_id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.year }}</td>
+                <td>{{ book.pagesCount }}</td>
+                <td>{{ book.ISBN }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h1>Authors</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Author ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Birthday</th>
+                <th>Gender</th>
+                <th>Nationality</th>
+                <th>Books</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors %}
+            <tr>
+                <td>{{ author.author_id }}</td>
+                <td>{{ author.name }}</td>
+                <td>{{ author.surname }}</td>
+                <td>{{ author.birthday }}</td>
+                <td>{{ author.gender }}</td>
+                <td>{{ author.nationality }}</td>
+                <td>
+                    {% for book in author.books.all %}
+                        {{ book.title }}<br>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
